@@ -7,10 +7,10 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class Conexion {
-String bd="escuela";
+String bd="LogIn";
 String url="jdbc:mysql://localhost:3306/";
-String user="roy";
-String password="apdPt9[rdg1jx0SL";
+String user="root";
+String password="Marisol12";
 String driver="com.mysql.cj.jdbc.Driver";
 Connection cx;
 
