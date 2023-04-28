@@ -15,23 +15,22 @@ import javax.swing.JRootPane;
  * @author Rodrigo
  */
 public class Principal extends javax.swing.JFrame {
-Alumno a=new Alumno();
-Calificaciones c=new Calificaciones();
-Mostrar m=new Mostrar();
+
+    Alumno a = new Alumno();
+    Calificaciones c = new Calificaciones();
+    Mostrar m = new Mostrar();
 
     public Principal() {
         setUndecorated(true);
         getRootPane().setWindowDecorationStyle(JRootPane.NONE);
         initComponents();
-        
-        
-   
-         Image img = Toolkit.getDefaultToolkit().getImage(getClass().getResource("/Imagenes/imagen.png"));
-         setIconImage(img);
+
+        Image img = Toolkit.getDefaultToolkit().getImage(getClass().getResource("/Imagenes/imagen.png"));
+        setIconImage(img);
         this.setLocationRelativeTo(null);
         this.setTitle("Principal");
-        
-      
+        this.setVisible(true);
+
     }
 
     /**
@@ -311,19 +310,19 @@ Mostrar m=new Mostrar();
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        Calificaciones calif=new Calificaciones();
+        Calificaciones calif = new Calificaciones();
         calif.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        Alumno alum=new Alumno();
+        Alumno alum = new Alumno();
         alum.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        Mostrar mons=new Mostrar();
+        Mostrar mons = new Mostrar();
         mons.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed

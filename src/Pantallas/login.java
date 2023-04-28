@@ -1,17 +1,25 @@
 package Pantallas;
 
+import Metodos.Conexion;
 import java.awt.Color;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import javax.swing.JOptionPane;
 import javax.swing.JRootPane;
 
 public class login extends javax.swing.JFrame {
 
     public static Connection con;
     public static PreparedStatement ps;
+    Statement st;
+    ResultSet rs;
+    
     private String Usuario = "root";
     private String Password = "Marisol12";
 
@@ -175,7 +183,20 @@ public class login extends javax.swing.JFrame {
     }//GEN-LAST:event_SalirActionPerformed
 
     private void EntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EntrarActionPerformed
-        
+        if (txtPassword.getText().isEmpty() || txtUsuario.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Ambos campos deben estar llenos para poder iniciar sesion");
+        } else {
+            try {
+                st = login.con.createStatement();
+                rs = st.executeQuery("select * from usuario");
+                if (Conexion.login(rs, st, txtUsuario.getText(), txtPassword.getText())) {
+                    new Principal();
+                    this.dispose();
+                }
+            } catch (SQLException f) {
+                System.out.println(f);
+            }
+        }
     }//GEN-LAST:event_EntrarActionPerformed
 
     private void txtUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUsuarioActionPerformed

@@ -11,7 +11,7 @@ public class Conexion {
         int cont = 0;
 
         try {
-            rs = st.executeQuery("select * from usuarios");
+            rs = st.executeQuery("select * from usuario");
             while (rs.next()) {
                 if (nombre.equals(rs.getString("Nombre")) && contrseña.equals(rs.getString("Contraseña"))) {
                     cont++;
