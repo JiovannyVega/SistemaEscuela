@@ -1,31 +1,35 @@
-package login;
+package Pantallas;
 
 import java.awt.Color;
 import java.awt.Image;
 import java.awt.Toolkit;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.JOptionPane;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import javax.swing.JRootPane;
-import practica_01.Conexion;
 
 public class login extends javax.swing.JFrame {
 
-    Conexion cx;
+    public static Connection con;
+    public static PreparedStatement ps;
+    private String Usuario = "root";
+    private String Password = "Marisol12";
 
     public login() {
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/Escuela", Usuario, Password);
+            ps = con.prepareStatement("INSERT INTO usuario VALUES (?,?)");
+        } catch (Exception e) {
+            System.err.println(e);
+        }
         setUndecorated(true);
         getRootPane().setWindowDecorationStyle(JRootPane.NONE);
         initComponents();
-
+        
         this.setTitle("Login");
         Image img = Toolkit.getDefaultToolkit().getImage(getClass().getResource("/Imagenes/imagen.png"));
         this.setIconImage(img);
-        cx = new Conexion();
-        cx.conectar();
         this.setLocationRelativeTo(null);
     }
 
@@ -84,7 +88,7 @@ public class login extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Segoe UI Semibold", 1, 14)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel3.setText("Crear Cuenta");
-        jLabel3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 10, 150, -1));
 
         jLabel6.setFont(new java.awt.Font("Segoe UI Semibold", 1, 20)); // NOI18N
@@ -158,7 +162,7 @@ public class login extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(41, 41, 41)
+                .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
@@ -171,34 +175,7 @@ public class login extends javax.swing.JFrame {
     }//GEN-LAST:event_SalirActionPerformed
 
     private void EntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EntrarActionPerformed
-        try {
-            String user = txtUsuario.getText();
-            String password = String.valueOf(txtPassword.getPassword());
-            //String query = "SELECT *FROM usuario WHERE user='" + user + "' and password='" + password + "' ";
-            String query = "SELECT *FROM usuario";
-            System.out.println(query);
-            Statement st = cx.conectar().createStatement();
-            ResultSet rs = st.executeQuery(query);
-            boolean bandera = false;
-            if (rs.next()) {
-                if (rs.getString("user").equals(user)) {
-                    bandera = true;
-                }
-            } else {
-                JOptionPane.showMessageDialog(this, "EL USUARIO NO EXISTE EN LA BASE DE DATOS");
-            }
-            if (bandera == false) {
-                JOptionPane.showMessageDialog(this, "EL USUARIO NO EXISTE EN LA BASE DE DATOS");
-
-            } else {
-                JOptionPane.showMessageDialog(this, "Bienvenido " + user.toUpperCase());
-                proceso p = new proceso();
-                p.setVisible(true);
-                this.setVisible(false);
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(login.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        
     }//GEN-LAST:event_EntrarActionPerformed
 
     private void txtUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUsuarioActionPerformed
