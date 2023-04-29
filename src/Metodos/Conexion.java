@@ -1,8 +1,12 @@
 package Metodos;
 
+import static Pantallas.login.con;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 public class Conexion {
@@ -40,29 +44,28 @@ public class Conexion {
         }
     }
 
-    public static boolean insertar(PreparedStatement ps, String nombre, String contraseña, ResultSet rs, Statement st) {
-        int cont = 0;
+    public static boolean insertar(String nombre, String contraseña, ResultSet rs, Statement st) {
         try {
-            rs = st.executeQuery("select * from usuarios");
-            while (rs.next()) {
-                if (nombre.equals(rs.getString("Nombre"))) {
-                    cont++;
-                    return true;
+            PreparedStatement ps = con.prepareStatement("INSERT INTO usuario VALUES (?,?)");
+            try {
+                rs = st.executeQuery("select * from usuario");
+                while (rs.next()) {
+                    if (nombre.equals(rs.getString("Nombre"))) {
+                        JOptionPane.showMessageDialog(null, "Ese nombre ya esta en uso");
+                        return false;
+                    }
                 }
-            }
-            if (cont > 0) {
-                JOptionPane.showMessageDialog(null, "Ese nombre ya esta en uso");
-                System.out.println("Hola");
-            } else {
                 ps.setString(1, nombre);
                 ps.setString(2, contraseña);
                 ps.executeUpdate();
                 System.out.println("cuenta creada");
                 JOptionPane.showMessageDialog(null, "Cuenta creada con exito!!");
+            } catch (Exception e) {
+                System.out.println(e);
             }
-        } catch (Exception e) {
-            System.out.println(e);
+        } catch (SQLException ex) {
+            Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return false;
+        return true;
     }
 }

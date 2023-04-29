@@ -5,6 +5,11 @@
  */
 package Pantallas;
 
+import Metodos.Conexion;
+import java.sql.SQLException;
+import java.sql.*;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author ALUMNO
@@ -39,10 +44,10 @@ public class Usuarios extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
+        txtPassword = new javax.swing.JTextField();
+        txtUsuario = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        txtPasswordConfirmation = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
 
@@ -126,15 +131,15 @@ public class Usuarios extends javax.swing.JFrame {
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel2.setText("Contraseña");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 170, 180, -1));
-        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 190, 260, 30));
-        jPanel1.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 130, 260, 30));
+        jPanel1.add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 190, 260, 30));
+        jPanel1.add(txtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 130, 260, 30));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI Semibold", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(153, 153, 153));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel3.setText("Confirmar contraseña");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 230, 180, 20));
-        jPanel1.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 250, 260, 30));
+        jPanel1.add(txtPasswordConfirmation, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 250, 260, 30));
 
         jButton1.setBackground(new java.awt.Color(92, 12, 12));
         jButton1.setFont(new java.awt.Font("Segoe UI Light", 1, 14)); // NOI18N
@@ -149,6 +154,11 @@ public class Usuarios extends javax.swing.JFrame {
         jButton2.setBackground(new java.awt.Color(92, 12, 12));
         jButton2.setFont(new java.awt.Font("Segoe UI Light", 1, 14)); // NOI18N
         jButton2.setText("Guardar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 310, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -170,6 +180,25 @@ public class Usuarios extends javax.swing.JFrame {
         log.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        if (txtPassword.getText().isEmpty() || txtUsuario.getText().isEmpty() || txtPasswordConfirmation.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Todos los campos deben estar llenos para continuar");
+        } else if (!txtPassword.getText().equals(txtPasswordConfirmation.getText())) {
+            JOptionPane.showMessageDialog(null, "Ambas contraseñas deben coincidir");
+        } else {
+            try {
+                Statement st = login.con.createStatement();
+                ResultSet rs = st.executeQuery("select * from usuario");
+                if (Conexion.insertar(txtUsuario.getText(), txtPassword.getText(), rs, st)) {
+                    new login().setVisible(true);
+                    this.dispose();
+                }
+            } catch (SQLException f) {
+                System.out.println(f);
+            }
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -222,8 +251,8 @@ public class Usuarios extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField txtPassword;
+    private javax.swing.JTextField txtPasswordConfirmation;
+    private javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables
 }

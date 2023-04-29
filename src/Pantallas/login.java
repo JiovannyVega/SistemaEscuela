@@ -16,7 +16,6 @@ import javax.swing.JRootPane;
 public class login extends javax.swing.JFrame {
 
     public static Connection con;
-    public static PreparedStatement ps;
     Statement st;
     ResultSet rs;
     
@@ -27,7 +26,6 @@ public class login extends javax.swing.JFrame {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             con = DriverManager.getConnection("jdbc:mysql://localhost:3306/Escuela", Usuario, Password);
-            ps = con.prepareStatement("INSERT INTO usuario VALUES (?,?)");
         } catch (Exception e) {
             System.err.println(e);
         }
