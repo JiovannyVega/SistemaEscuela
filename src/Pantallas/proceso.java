@@ -5,6 +5,8 @@
  */
 package Pantallas;
 
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -21,6 +23,10 @@ public class proceso extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         arrancar();
+        this.setTitle("Login");
+        Image img = Toolkit.getDefaultToolkit().getImage(getClass().getResource("/Imagenes/imagen.png"));
+        this.setIconImage(img);
+        this.setLocationRelativeTo(null);
     }
     public void arrancar(){
         Thread hilo=new Thread(new Runnable() {

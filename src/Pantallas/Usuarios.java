@@ -6,9 +6,12 @@
 package Pantallas;
 
 import Metodos.Conexion;
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.sql.SQLException;
 import java.sql.*;
 import javax.swing.JOptionPane;
+import javax.swing.JRootPane;
 
 /**
  *
@@ -20,7 +23,14 @@ public class Usuarios extends javax.swing.JFrame {
      * Creates new form Usuarios
      */
     public Usuarios() {
+        
         initComponents();
+        
+        this.setTitle("Login");
+        Image img = Toolkit.getDefaultToolkit().getImage(getClass().getResource("/Imagenes/imagen.png"));
+        this.setIconImage(img);
+        this.setLocationRelativeTo(null);
+        getRootPane().setWindowDecorationStyle(JRootPane.NONE);
     }
 
     /**
@@ -71,6 +81,8 @@ public class Usuarios extends javax.swing.JFrame {
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 100, 180, -1));
 
         jPanel3.setBackground(new java.awt.Color(92, 12, 12));
+        jPanel3.setEnabled(false);
+        jPanel3.setFocusable(false);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/imagen.png"))); // NOI18N
 

@@ -5,6 +5,9 @@
  */
 package Pantallas;
 
+import java.awt.Image;
+import java.awt.Toolkit;
+
 /**
  *
  * @author Rodrigo
@@ -16,6 +19,10 @@ public class Alumno extends javax.swing.JFrame {
      */
     public Alumno() {
         initComponents();
+        this.setTitle("Login");
+        Image img = Toolkit.getDefaultToolkit().getImage(getClass().getResource("/Imagenes/imagen.png"));
+        this.setIconImage(img);
+        this.setLocationRelativeTo(null);
     }
 
     /**
