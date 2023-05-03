@@ -7,6 +7,7 @@ package Pantallas;
 
 import java.awt.Image;
 import java.awt.Toolkit;
+import javax.swing.JRootPane;
 
 /**
  *
@@ -18,11 +19,15 @@ public class Alumno extends javax.swing.JFrame {
      * Creates new form Alumno
      */
     public Alumno() {
+        
+        setUndecorated(true);
+        getRootPane().setWindowDecorationStyle(JRootPane.NONE);
+       
         initComponents();
         this.setTitle("Login");
         Image img = Toolkit.getDefaultToolkit().getImage(getClass().getResource("/Imagenes/imagen.png"));
         this.setIconImage(img);
-        this.setLocationRelativeTo(null);
+       this.setLocationRelativeTo(null);
     }
 
     /**

@@ -21,6 +21,7 @@ public class proceso extends javax.swing.JFrame {
      */
     public proceso() {
         initComponents();
+        setUndecorated(true);
         this.setLocationRelativeTo(null);
         arrancar();
         this.setTitle("Login");
