@@ -20,7 +20,7 @@ public class login extends javax.swing.JFrame {
     ResultSet rs;
     
     private String Usuario = "root";
-    private String Password = "1234";
+    private String Password = "Marisol12";
 
     public login() {
         try {
