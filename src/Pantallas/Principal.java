@@ -21,6 +21,7 @@ public class Principal extends javax.swing.JFrame {
     Mostrar m = new Mostrar();
 
     public Principal() {
+        
         setUndecorated(true);
         getRootPane().setWindowDecorationStyle(JRootPane.NONE);
         initComponents();

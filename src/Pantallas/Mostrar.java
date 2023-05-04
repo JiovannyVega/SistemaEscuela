@@ -7,6 +7,7 @@ package Pantallas;
 
 import java.awt.Image;
 import java.awt.Toolkit;
+import javax.swing.JRootPane;
 
 /**
  *
@@ -18,6 +19,8 @@ public class Mostrar extends javax.swing.JFrame {
      * Creates new form Mostrar
      */
     public Mostrar() {
+        setUndecorated(true);
+        getRootPane().setWindowDecorationStyle(JRootPane.NONE);
         initComponents();
         this.setTitle("Login");
         Image img = Toolkit.getDefaultToolkit().getImage(getClass().getResource("/Imagenes/imagen.png"));
