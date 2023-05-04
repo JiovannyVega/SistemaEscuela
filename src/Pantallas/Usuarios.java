@@ -27,8 +27,7 @@ public class Usuarios extends javax.swing.JFrame {
         setUndecorated(true);
         getRootPane().setWindowDecorationStyle(JRootPane.NONE);
         initComponents();
-        
-        this.setTitle("Login");
+        this.setTitle("Usuarios");
         Image img = Toolkit.getDefaultToolkit().getImage(getClass().getResource("/Imagenes/imagen.png"));
         this.setIconImage(img);
         this.setLocationRelativeTo(null);

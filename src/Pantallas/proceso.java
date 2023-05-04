@@ -24,7 +24,7 @@ public class proceso extends javax.swing.JFrame {
         setUndecorated(true);
         this.setLocationRelativeTo(null);
         arrancar();
-        this.setTitle("Login");
+        this.setTitle("Proceso");
         Image img = Toolkit.getDefaultToolkit().getImage(getClass().getResource("/Imagenes/imagen.png"));
         this.setIconImage(img);
         this.setLocationRelativeTo(null);

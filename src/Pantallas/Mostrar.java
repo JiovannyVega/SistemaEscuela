@@ -22,7 +22,7 @@ public class Mostrar extends javax.swing.JFrame {
         setUndecorated(true);
         getRootPane().setWindowDecorationStyle(JRootPane.NONE);
         initComponents();
-        this.setTitle("Login");
+        this.setTitle("Mostrar");
         Image img = Toolkit.getDefaultToolkit().getImage(getClass().getResource("/Imagenes/imagen.png"));
         this.setIconImage(img);
         this.setLocationRelativeTo(null);
