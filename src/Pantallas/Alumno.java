@@ -10,7 +10,7 @@ public class Alumno extends javax.swing.JFrame {
         getRootPane().setWindowDecorationStyle(JRootPane.NONE);
        
         initComponents();
-        this.setTitle("Alimmo");
+        this.setTitle("Alummo");
         Image img = Toolkit.getDefaultToolkit().getImage(getClass().getResource("/Imagenes/imagen.png"));
         this.setIconImage(img);
        this.setLocationRelativeTo(null);
@@ -24,11 +24,12 @@ public class Alumno extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        jLabel20 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        Mostrar = new javax.swing.JButton();
+        Mostrar1 = new javax.swing.JButton();
+        Mostrar2 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
@@ -76,23 +77,10 @@ public class Alumno extends javax.swing.JFrame {
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/imagen.png"))); // NOI18N
         jPanel4.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 330, 130));
 
-        jLabel7.setFont(new java.awt.Font("Segoe UI Light", 1, 24)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel7.setText("Actualizar");
-        jPanel4.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 230, 330, -1));
-
         jLabel8.setFont(new java.awt.Font("Segoe UI Light", 1, 24)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel8.setText("Registrar");
-        jPanel4.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 180, 330, -1));
-
-        jLabel20.setFont(new java.awt.Font("Segoe UI Light", 1, 24)); // NOI18N
-        jLabel20.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel20.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel20.setText("Eliminar");
-        jPanel4.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 280, 330, -1));
+        jPanel4.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 190, 330, -1));
 
         jButton1.setBackground(new java.awt.Color(102, 0, 0));
         jButton1.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
@@ -103,7 +91,7 @@ public class Alumno extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel4.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 430, -1, -1));
+        jPanel4.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 410, -1, -1));
 
         jButton2.setBackground(new java.awt.Color(102, 0, 0));
         jButton2.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
@@ -114,7 +102,40 @@ public class Alumno extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
-        jPanel4.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 390, 110, -1));
+        jPanel4.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 410, 110, -1));
+
+        Mostrar.setBackground(new java.awt.Color(92, 0, 0));
+        Mostrar.setFont(new java.awt.Font("Segoe UI Light", 1, 24)); // NOI18N
+        Mostrar.setForeground(new java.awt.Color(255, 255, 255));
+        Mostrar.setText("Eliminar");
+        Mostrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MostrarActionPerformed(evt);
+            }
+        });
+        jPanel4.add(Mostrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 290, 160, -1));
+
+        Mostrar1.setBackground(new java.awt.Color(92, 0, 0));
+        Mostrar1.setFont(new java.awt.Font("Segoe UI Light", 1, 24)); // NOI18N
+        Mostrar1.setForeground(new java.awt.Color(255, 255, 255));
+        Mostrar1.setText("Mostrar");
+        Mostrar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Mostrar1ActionPerformed(evt);
+            }
+        });
+        jPanel4.add(Mostrar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 190, 160, -1));
+
+        Mostrar2.setBackground(new java.awt.Color(92, 0, 0));
+        Mostrar2.setFont(new java.awt.Font("Segoe UI Light", 1, 24)); // NOI18N
+        Mostrar2.setForeground(new java.awt.Color(255, 255, 255));
+        Mostrar2.setText("Actualizar");
+        Mostrar2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Mostrar2ActionPerformed(evt);
+            }
+        });
+        jPanel4.add(Mostrar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 240, 160, -1));
 
         jPanel3.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 330, 490));
 
@@ -421,17 +442,31 @@ public class Alumno extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jTextField14ActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        Principal prin=new Principal();
+        prin.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton2ActionPerformed
+
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         Principal prin=new Principal();
         prin.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        Principal prin=new Principal();
-        prin.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_jButton2ActionPerformed
+    private void MostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MostrarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_MostrarActionPerformed
+
+    private void Mostrar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Mostrar1ActionPerformed
+        Lista_Alumnos lis = new Lista_Alumnos();
+        lis.setVisible(true);
+        this.dispose();        
+    }//GEN-LAST:event_Mostrar1ActionPerformed
+
+    private void Mostrar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Mostrar2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Mostrar2ActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -466,6 +501,9 @@ public class Alumno extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Mostrar;
+    private javax.swing.JButton Mostrar1;
+    private javax.swing.JButton Mostrar2;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
     private java.awt.Checkbox checkbox1;
@@ -485,11 +523,9 @@ public class Alumno extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
