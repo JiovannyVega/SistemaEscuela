@@ -8,6 +8,7 @@ import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 public class Conexion {
 
@@ -39,6 +40,19 @@ public class Conexion {
                 System.out.println("Usuario:" + rs.getString("Nombre") + "\nContraseña: " + rs.getString("contraseña") + "\n");
             }
             //con.close();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+    
+    public static void mostrarCP(Statement st, int cp, JTextField estado, JTextField municipio, JTextField colonia){
+        try {
+            ResultSet rs = st.executeQuery("select * from codigoPostal where id = " + cp);
+            rs.next();
+            estado.setText(rs.getString("estado"));
+            //ciudad.setText(rs.getString("ciudad"));
+            municipio.setText(rs.getString("ciudad"));
+            colonia.setText(rs.getString("colonia"));
         } catch (Exception e) {
             System.out.println(e);
         }
