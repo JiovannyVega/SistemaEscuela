@@ -313,12 +313,12 @@
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jTextField10" min="-2" pref="235" max="-2" attributes="0"/>
                                   <Component id="jLabel16" min="-2" pref="193" max="-2" attributes="0"/>
                                   <Component id="JLabelNC" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="txtNumControl" alignment="0" min="-2" pref="122" max="-2" attributes="0"/>
+                                  <Component id="spinnerFecha" alignment="0" min="-2" pref="139" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="radioOtro" min="-2" max="-2" attributes="0"/>
@@ -447,8 +447,8 @@
                               </Group>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="jTextField10" min="-2" pref="25" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="spinnerFecha" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="JLabelNC" min="-2" pref="33" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="txtNumControl" min="-2" max="-2" attributes="0"/>
@@ -464,7 +464,7 @@
                           <Component id="txtTelefono" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
                           <Component id="txtCorreo" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="10" max="32767" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -584,8 +584,6 @@
                 <Property name="text" type="java.lang.String" value="Sexo:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField10">
-            </Component>
             <Component class="javax.swing.JLabel" name="jLabel16">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -699,6 +697,8 @@
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value=""/>
               </AuxValues>
+            </Component>
+            <Component class="javax.swing.JSpinner" name="spinnerFecha">
             </Component>
           </SubComponents>
         </Container>

@@ -39,11 +39,16 @@ import java.awt.Image;
 import java.awt.Toolkit;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Vector;
 import javax.swing.ButtonGroup;
 import javax.swing.ComboBoxModel;
 import javax.swing.JComboBox;
 import javax.swing.JRootPane;
+import javax.swing.JSpinner;
+import javax.swing.SpinnerDateModel;
+import javax.swing.SpinnerModel;
 
 /**
  *
@@ -82,6 +87,15 @@ public class Alumno extends javax.swing.JFrame {
         } catch (Exception e) {
             System.out.println(e);
         }
+        Calendar calendar = Calendar.getInstance();
+        Date inicio = calendar.getTime();
+        calendar.add(Calendar.YEAR, -100);
+        Date fechaAnterior = calendar.getTime();
+        calendar.add(Calendar.YEAR, 200);
+        Date fechaPosterior = calendar.getTime();
+        SpinnerModel fechaModel = new SpinnerDateModel(inicio, fechaAnterior, fechaPosterior, Calendar.YEAR);
+        spinnerFecha.setModel(fechaModel);
+        spinnerFecha.setEditor(new JSpinner.DateEditor(spinnerFecha, "dd-MM-yyyy"));
 
     }
 
@@ -126,7 +140,6 @@ public class Alumno extends javax.swing.JFrame {
         jLabel14 = new javax.swing.JLabel();
         txtMunicipio = new javax.swing.JTextField();
         jLabel15 = new javax.swing.JLabel();
-        jTextField10 = new javax.swing.JTextField();
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
         txtSexo = new javax.swing.JTextField();
@@ -140,6 +153,7 @@ public class Alumno extends javax.swing.JFrame {
         comboCP = new javax.swing.JComboBox<>();
         JLabelNC = new javax.swing.JLabel();
         txtNumControl = new javax.swing.JTextField();
+        spinnerFecha = new javax.swing.JSpinner();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -403,11 +417,11 @@ public class Alumno extends javax.swing.JFrame {
                                 .addGap(0, 0, Short.MAX_VALUE))))
                     .addGroup(txtNumExtLayout.createSequentialGroup()
                         .addGroup(txtNumExtLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(JLabelNC)
-                            .addComponent(txtNumControl, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
+                            .addComponent(txtNumControl, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(spinnerFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(60, 60, 60)
                         .addGroup(txtNumExtLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(txtNumExtLayout.createSequentialGroup()
                                 .addComponent(radioOtro)
@@ -501,8 +515,8 @@ public class Alumno extends javax.swing.JFrame {
                             .addComponent(txtSexo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(radioOtro)))
                     .addGroup(txtNumExtLayout.createSequentialGroup()
-                        .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(spinnerFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(JLabelNC, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtNumControl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -514,7 +528,7 @@ public class Alumno extends javax.swing.JFrame {
                 .addGroup(txtNumExtLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(10, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel3.add(txtNumExt, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 60, 620, 430));
@@ -662,11 +676,11 @@ public class Alumno extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JTextField jTextField10;
     private javax.swing.JTextField jTextField7;
     private javax.swing.JRadioButton radioHombre;
     private javax.swing.JRadioButton radioMujer;
     private javax.swing.JRadioButton radioOtro;
+    private javax.swing.JSpinner spinnerFecha;
     private javax.swing.JTextField txtApellido1;
     private javax.swing.JTextField txtApellido2;
     private javax.swing.JTextField txtCalle;
