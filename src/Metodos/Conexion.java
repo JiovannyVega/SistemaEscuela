@@ -44,8 +44,8 @@ public class Conexion {
             System.out.println(e);
         }
     }
-    
-    public static void mostrarCP(Statement st, int cp, JTextField estado, JTextField municipio, JTextField colonia){
+
+    public static void mostrarCP(Statement st, int cp, JTextField estado, JTextField municipio, JTextField colonia) {
         try {
             ResultSet rs = st.executeQuery("select * from codigoPostal where id = " + cp);
             rs.next();
@@ -53,6 +53,19 @@ public class Conexion {
             //ciudad.setText(rs.getString("ciudad"));
             municipio.setText(rs.getString("ciudad"));
             colonia.setText(rs.getString("colonia"));
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+
+    public static void mostrarNC(Statement st, JTextField txtNumControl) {
+        try {
+            int max = 0;
+            ResultSet rs = st.executeQuery("select numero_control from alumno");
+            while (rs.next()) {
+                max = Math.max(max, rs.getInt("numero_control"));
+            }
+            txtNumControl.setText(String.valueOf(max + 1));
         } catch (Exception e) {
             System.out.println(e);
         }

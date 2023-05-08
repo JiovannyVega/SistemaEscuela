@@ -52,6 +52,7 @@ import javax.swing.JRootPane;
 public class Alumno extends javax.swing.JFrame {
 
     Vector<Integer> vCP = new Vector<Integer>(0);
+    String sexo = "Hombre";
 
     public Alumno() {
 
@@ -74,6 +75,12 @@ public class Alumno extends javax.swing.JFrame {
         for (int i = 89800; i < 89925; i++) {
             vCP.add(i);
             //comboCP.addItem(i);
+        }
+        try {
+            Statement st = login.con.createStatement();
+            Conexion.mostrarNC(st, txtNumControl);
+        } catch (Exception e) {
+            System.out.println(e);
         }
 
     }
@@ -131,6 +138,8 @@ public class Alumno extends javax.swing.JFrame {
         radioMujer = new javax.swing.JRadioButton();
         radioOtro = new javax.swing.JRadioButton();
         comboCP = new javax.swing.JComboBox<>();
+        JLabelNC = new javax.swing.JLabel();
+        txtNumControl = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -289,6 +298,11 @@ public class Alumno extends javax.swing.JFrame {
 
         radioHombre.setSelected(true);
         radioHombre.setText("Masculino");
+        radioHombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                radioHombreActionPerformed(evt);
+            }
+        });
 
         radioMujer.setText("Femenino");
         radioMujer.addActionListener(new java.awt.event.ActionListener() {
@@ -315,6 +329,22 @@ public class Alumno extends javax.swing.JFrame {
         comboCP.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comboCPActionPerformed(evt);
+            }
+        });
+
+        JLabelNC.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
+        JLabelNC.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        JLabelNC.setText("Numero de control");
+
+        txtNumControl.setEditable(false);
+        txtNumControl.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNumControlActionPerformed(evt);
+            }
+        });
+        txtNumControl.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNumControlKeyTyped(evt);
             }
         });
 
@@ -374,7 +404,9 @@ public class Alumno extends javax.swing.JFrame {
                     .addGroup(txtNumExtLayout.createSequentialGroup()
                         .addGroup(txtNumExtLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(JLabelNC)
+                            .addComponent(txtNumControl, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(txtNumExtLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(txtNumExtLayout.createSequentialGroup()
@@ -458,18 +490,23 @@ public class Alumno extends javax.swing.JFrame {
                         .addComponent(jLabel17)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(txtNumExtLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(txtNumExtLayout.createSequentialGroup()
                         .addGroup(txtNumExtLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(radioHombre)
                             .addComponent(comboCP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(radioMujer)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(txtNumExtLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtSexo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(radioOtro))
-                .addGap(25, 25, 25)
+                        .addComponent(radioMujer)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(txtNumExtLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtSexo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(radioOtro)))
+                    .addGroup(txtNumExtLayout.createSequentialGroup()
+                        .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(JLabelNC, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtNumControl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(11, 11, 11)
                 .addGroup(txtNumExtLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel19))
@@ -521,11 +558,11 @@ public class Alumno extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void radioOtroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioOtroActionPerformed
-        //
+        sexo = txtSexo.getText();
     }//GEN-LAST:event_radioOtroActionPerformed
 
     private void radioMujerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioMujerActionPerformed
-        // TODO add your handling code here:
+        sexo = "Mujer";
     }//GEN-LAST:event_radioMujerActionPerformed
 
     private void comboCPItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_comboCPItemStateChanged
@@ -533,7 +570,6 @@ public class Alumno extends javax.swing.JFrame {
     }//GEN-LAST:event_comboCPItemStateChanged
 
     private void comboCPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboCPActionPerformed
-        System.out.println("HOLAAAAAAAAa");
         try {
             Statement st = login.con.createStatement();
             Conexion.mostrarCP(st, (int) comboCP.getSelectedItem(), txtEstado, txtMunicipio, txtColonia);
@@ -542,6 +578,25 @@ public class Alumno extends javax.swing.JFrame {
             System.out.println(e);
         }
     }//GEN-LAST:event_comboCPActionPerformed
+
+    private void radioHombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioHombreActionPerformed
+        sexo = "Hombre";
+    }//GEN-LAST:event_radioHombreActionPerformed
+
+    private void txtNumControlActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNumControlActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNumControlActionPerformed
+
+    private void txtNumControlKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNumControlKeyTyped
+        int key = evt.getKeyChar();
+        boolean mayus = key >= 65 && key <= 90;
+        boolean minus = key >= 97 && key <= 122;
+        boolean espacio = key == 32;
+        
+        if ((mayus || minus || espacio)) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtNumControlKeyTyped
 
     /**
      * @param args the command line arguments
@@ -579,6 +634,7 @@ public class Alumno extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel JLabelNC;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.JComboBox<Integer> comboCP;
@@ -619,6 +675,7 @@ public class Alumno extends javax.swing.JFrame {
     private javax.swing.JTextField txtEstado;
     private javax.swing.JTextField txtMunicipio;
     private javax.swing.JTextField txtNombre;
+    private javax.swing.JTextField txtNumControl;
     private javax.swing.JPanel txtNumExt;
     private javax.swing.JTextField txtNumInt;
     private javax.swing.JTextField txtSexo;
