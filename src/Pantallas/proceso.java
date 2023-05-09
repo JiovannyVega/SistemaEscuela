@@ -1,30 +1,17 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Pantallas;
-
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/**
- *
- * @author Rodrigo
- */
 public class proceso extends javax.swing.JFrame {
 
-    /**
-     * Creates new form proceso
-     */
     public proceso() {
         initComponents();
         setUndecorated(true);
         this.setLocationRelativeTo(null);
         arrancar();
-        this.setTitle("Login");
+        this.setTitle("Proceso");
         Image img = Toolkit.getDefaultToolkit().getImage(getClass().getResource("/Imagenes/imagen.png"));
         this.setIconImage(img);
         this.setLocationRelativeTo(null);
