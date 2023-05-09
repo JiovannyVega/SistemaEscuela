@@ -103,7 +103,7 @@ public class Alumno extends javax.swing.JFrame {
         radioHombre = new javax.swing.JRadioButton();
         radioMujer = new javax.swing.JRadioButton();
         radioOtro = new javax.swing.JRadioButton();
-        comboCP = new javax.swing.JComboBox<>();
+        comboCP = new javax.swing.JComboBox<Integer>();
         JLabelNC = new javax.swing.JLabel();
         txtNumControl = new javax.swing.JTextField();
         spinnerDia = new javax.swing.JSpinner();
@@ -153,18 +153,33 @@ public class Alumno extends javax.swing.JFrame {
         Mostrar.setFont(new java.awt.Font("Segoe UI Light", 1, 24)); // NOI18N
         Mostrar.setForeground(new java.awt.Color(255, 255, 255));
         Mostrar.setText("Eliminar");
+        Mostrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                //MostrarActionPerformed(evt);
+            }
+        });
         jPanel4.add(Mostrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 290, 160, -1));
 
         Mostrar1.setBackground(new java.awt.Color(92, 0, 0));
         Mostrar1.setFont(new java.awt.Font("Segoe UI Light", 1, 24)); // NOI18N
         Mostrar1.setForeground(new java.awt.Color(255, 255, 255));
         Mostrar1.setText("Mostrar");
+        Mostrar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Mostrar1ActionPerformed(evt);
+            }
+        });
         jPanel4.add(Mostrar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 190, 160, -1));
 
         Mostrar2.setBackground(new java.awt.Color(92, 0, 0));
         Mostrar2.setFont(new java.awt.Font("Segoe UI Light", 1, 24)); // NOI18N
         Mostrar2.setForeground(new java.awt.Color(255, 255, 255));
         Mostrar2.setText("Actualizar");
+        Mostrar2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                //Mostrar2ActionPerformed(evt);
+            }
+        });
         jPanel4.add(Mostrar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 240, 160, -1));
 
         jPanel3.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 330, 500));
@@ -220,6 +235,11 @@ public class Alumno extends javax.swing.JFrame {
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel11.setText("Num.Interno:");
 
+        txtNumInt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                //txtNumIntActionPerformed(evt);
+            }
+        });
         txtNumInt.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtNumIntKeyTyped(evt);
@@ -309,6 +329,7 @@ public class Alumno extends javax.swing.JFrame {
             }
         });
 
+        comboCP.setEditable(true);
         comboCP.setMaximumRowCount(200);
         comboCP.setModel(new javax.swing.DefaultComboBoxModel<Integer>(vCP));
         comboCP.setSelectedItem(89800);
