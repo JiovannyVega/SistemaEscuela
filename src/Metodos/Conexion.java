@@ -71,7 +71,7 @@ public class Conexion {
         }
     }
 
-    public static boolean insertar(String nombre, String contraseña, ResultSet rs, Statement st) {
+    public static boolean crearUsuario(String nombre, String contraseña, ResultSet rs, Statement st) {
         try {
             PreparedStatement ps = con.prepareStatement("INSERT INTO usuario VALUES (?,?)");
             try {
@@ -92,6 +92,36 @@ public class Conexion {
             }
         } catch (SQLException ex) {
             Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return true;
+    }
+    
+    public static boolean crearAlumno(int numeroControl, String nombre, String apellido1, String apellido2, int cp, String calle, int numExt, int numInt, String FN, String sexo, String telefono, String email, Statement st) {
+        try {
+            ResultSet rs = st.executeQuery("select * from alumno");
+            PreparedStatement ps = con.prepareStatement("insert into alumno values (?,?,?,?,?,?,?,?,?,?,?,?)");
+            while (rs.next()) {                
+                if (numeroControl == rs.getInt("numero_control")) {
+                    JOptionPane.showMessageDialog(null, "Ese numero de control ya esta en uso");
+                    return false;
+                }
+            }
+            ps.setInt(1, numeroControl);
+            ps.setString(2, nombre);
+            ps.setString(3, apellido1);
+            ps.setString(4, apellido2);
+            ps.setInt(5, cp);
+            ps.setString(6, calle);
+            ps.setInt(7, numExt);
+            ps.setInt(8, numInt);
+            ps.setString(9, FN);
+            ps.setString(10, sexo);
+            ps.setString(11, telefono);
+            ps.setString(12, email);
+            ps.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Alumno registrado con exito!!");
+        } catch (Exception e) {
+            System.out.println(e);
         }
         return true;
     }

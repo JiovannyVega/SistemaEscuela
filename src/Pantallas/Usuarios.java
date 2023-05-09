@@ -202,7 +202,7 @@ public class Usuarios extends javax.swing.JFrame {
             try {
                 Statement st = login.con.createStatement();
                 ResultSet rs = st.executeQuery("select * from usuario");
-                if (Conexion.insertar(txtUsuario.getText(), txtPassword.getText(), rs, st)) {
+                if (Conexion.crearUsuario(txtUsuario.getText(), txtPassword.getText(), rs, st)) {
                     new login().setVisible(true);
                     this.dispose();
                 }
