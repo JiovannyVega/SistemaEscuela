@@ -23,7 +23,7 @@ import javax.swing.SpinnerNumberModel;
 public class Alumno extends javax.swing.JFrame {
 
     Vector<Integer> vCP = new Vector<Integer>(0);
-    String sexo = "Hombre";
+    String sexo;
 
     public Alumno() {
         setUndecorated(true);
@@ -52,6 +52,7 @@ public class Alumno extends javax.swing.JFrame {
         } catch (Exception e) {
             System.out.println(e);
         }
+        sexo = "Hombre";
 
     }
 
@@ -561,12 +562,21 @@ public class Alumno extends javax.swing.JFrame {
                 int numExt = Integer.parseInt(txtNumExt.getText());
                 int numInt = Integer.parseInt(txtNumInt.getText());
                 String FN = spinnerAño.getValue().toString() + "-" + spinnerMes.getValue().toString() + "-" + spinnerDia.getValue().toString();
+                if (radioOtro.isSelected()) {
+                    sexo = txtSexo.getText();
+                }
                 String telefono = txtTelefono.getText();
                 String email = txtCorreo.getText();
                 Conexion.crearAlumno(numeroControl, nombre, apellido1, apellido2, cp, calle, numExt, numInt, FN, sexo, telefono, email, st);
             } catch (SQLException f) {
                 System.out.println(f);
             }
+        }
+        try {
+            Statement st = login.con.createStatement();
+            Conexion.mostrarNC(st, txtNumControl);
+        } catch (Exception e) {
+            System.out.println(e);
         }
     }//GEN-LAST:event_guardarActionPerformed
 
@@ -577,7 +587,7 @@ public class Alumno extends javax.swing.JFrame {
     }//GEN-LAST:event_regresarActionPerformed
 
     private void radioOtroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioOtroActionPerformed
-        sexo = txtSexo.getText();
+        //sexo = txtSexo.getText();
     }//GEN-LAST:event_radioOtroActionPerformed
 
     private void radioMujerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioMujerActionPerformed
