@@ -255,7 +255,7 @@
             </Component>
           </SubComponents>
         </Container>
-        <Container class="javax.swing.JPanel" name="txtNumExt">
+        <Container class="javax.swing.JPanel" name="panel">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -338,7 +338,7 @@
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jTextField7" max="32767" attributes="0"/>
+                                  <Component id="txtNumExt" max="32767" attributes="0"/>
                                   <Group type="102" attributes="0">
                                       <Component id="jLabel12" min="-2" pref="154" max="-2" attributes="0"/>
                                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -450,7 +450,7 @@
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="txtEstado" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
                           <Component id="txtMunicipio" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
-                          <Component id="jTextField7" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                          <Component id="txtNumExt" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
                       </Group>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="103" groupAlignment="3" attributes="0">
@@ -587,10 +587,10 @@
                 <Property name="text" type="java.lang.String" value="Numero exterior:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField7">
+            <Component class="javax.swing.JTextField" name="txtNumExt">
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField7ActionPerformed"/>
-                <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTextField7KeyTyped"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtNumExtActionPerformed"/>
+                <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtNumExtKeyTyped"/>
               </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel13">

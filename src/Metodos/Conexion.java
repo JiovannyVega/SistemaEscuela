@@ -96,14 +96,13 @@ public class Conexion {
         return true;
     }
     
-    public static boolean crearAlumno(int numeroControl, String nombre, String apellido1, String apellido2, int cp, String calle, int numExt, int numInt, String FN, String sexo, String telefono, String email, Statement st) {
+    public static void crearAlumno(int numeroControl, String nombre, String apellido1, String apellido2, int cp, String calle, int numExt, int numInt, String FN, String sexo, String telefono, String email, Statement st) {
         try {
             ResultSet rs = st.executeQuery("select * from alumno");
             PreparedStatement ps = con.prepareStatement("insert into alumno values (?,?,?,?,?,?,?,?,?,?,?,?)");
             while (rs.next()) {                
                 if (numeroControl == rs.getInt("numero_control")) {
                     JOptionPane.showMessageDialog(null, "Ese numero de control ya esta en uso");
-                    return false;
                 }
             }
             ps.setInt(1, numeroControl);
@@ -123,6 +122,5 @@ public class Conexion {
         } catch (Exception e) {
             System.out.println(e);
         }
-        return true;
     }
 }
